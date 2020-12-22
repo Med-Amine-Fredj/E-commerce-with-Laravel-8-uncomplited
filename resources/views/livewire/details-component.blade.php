@@ -225,7 +225,7 @@
                                     </div>
                                 </div>
                             </li>
-                            
+
                             @endforeach
                         </ul>
                     </div>
@@ -258,6 +258,30 @@
                             </div>
                             @endforeach
                         </div>
+                    </div>  <!--End wrap-products-->
+                    <h3 class="title-box">Auction Products</h3>
+                    <div class="wrap-products">
+                        <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
+                            @foreach ($auction_products as $a_product)
+                            <div class="product product-style-2 equal-elem ">
+                                <div class="product-thumnail">
+                                    <a href="{{ route('product.details',['slug' => $a_product->slug]) }}" title="{{ $a_product->name }}">
+                                        <figure><img src="{{asset('assets/images/products/')}}/{{ $a_product->image }}" width="214" height="214" alt="{{ $a_product->name }}"></figure>
+                                    </a>
+                                    <div class="group-flash">
+                                        <span class="flash-item new-label">new</span>
+                                    </div>
+                                    <div class="wrap-btn">
+                                        <a href="#" class="function-link">quick view</a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <a href="{{ route('product.details',['slug' => $a_product->slug]) }}" class="product-name"><span>{{ $a_product->name }}</span></a>
+                                    <div class="wrap-price"><span class="product-price">{{ $a_product->regular_price }}</span></div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div><!--End wrap-products-->
                 </div>
             </div>
@@ -265,5 +289,7 @@
         </div><!--end row-->
 
     </div><!--end container-->
-
+    @foreach($auction_products as $a_product)
+    {{ $a_product->name }}
+    @endforeach
 </main>
